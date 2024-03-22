@@ -11,4 +11,16 @@ const { signToken, authMiddleware } = require('../utils/auth');
   //login
   //saveBook
   //deleteBook
+const resolvers = {
+    Query: {
+        getSingleUser: async (parent, args, context) => {
+            if (context.user) {
+                return User.findOne({ _id: context.user._id }).populate('savedBooks');
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+    }
+}
+
+//mutations
 
