@@ -46,6 +46,13 @@ const SignupForm = () => {
       });
 
       Auth.login(data.createUser.token);
+
+      setUserFormData({
+        username: '',
+        email: '',
+        password: '',
+      });
+    
     } catch (err) {
       console.error(err);
       setShowAlert(true);
